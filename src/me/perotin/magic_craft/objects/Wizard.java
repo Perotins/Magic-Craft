@@ -1,6 +1,9 @@
 package me.perotin.magic_craft.objects;
 
 import me.perotin.magic_craft.MagicCraft;
+import me.perotin.magic_craft.shop.ShopMenu;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -11,6 +14,7 @@ public class Wizard  {
     private String name;
     private ArrayList<Spell> spells;
     private ManaTask mana;
+    private ShopMenu menu;
 
     public Wizard(UUID uuid, String name) {
         this.uuid = uuid;
@@ -18,6 +22,19 @@ public class Wizard  {
         this.spells = new ArrayList<>();
         this.mana = new ManaTask();
         mana.runTaskTimerAsynchronously(MagicCraft.getInstance(), 0, 20*5);
+    }
+
+
+    public ShopMenu getMenu() {
+        return menu;
+    }
+
+    public Player getPlayer(){
+        return Bukkit.getPlayer(getUuid());
+    }
+
+    public void setMenu(ShopMenu menu) {
+        this.menu = menu;
     }
 
     public UUID getUuid() {

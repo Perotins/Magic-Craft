@@ -1,7 +1,8 @@
 package me.perotin.magic_craft.objects;
 
-import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public abstract class Spell extends MagicItem implements Listener  {
 
@@ -9,11 +10,21 @@ public abstract class Spell extends MagicItem implements Listener  {
     private final String spellName;
     private final String spellDescription;
     private int manaCost;
+    /** If casted wizard will not be null **/
+    private Wizard wizard;
 
     public Spell(String spellName, String spellDescription, int manaCost) {
         this.spellName = spellName;
         this.spellDescription = spellDescription;
         this.manaCost = manaCost;
+    }
+
+    public Wizard getWizard() {
+        return wizard;
+    }
+
+    public void setWizard(Wizard wizard) {
+        this.wizard = wizard;
     }
 
     public String getSpellName() {
@@ -40,7 +51,9 @@ public abstract class Spell extends MagicItem implements Listener  {
      * must be implemented so it can be called when registering spells
      *
      */
-    public abstract boolean cast(Event event);
+
+    @EventHandler
+    public abstract boolean cast(PlayerInteractEvent event);
 
 
 
