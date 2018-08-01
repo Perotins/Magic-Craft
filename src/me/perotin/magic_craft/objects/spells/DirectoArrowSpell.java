@@ -2,7 +2,6 @@ package me.perotin.magic_craft.objects.spells;
 
 import me.perotin.magic_craft.objects.Spell;
 import org.bukkit.Location;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 
 /**
@@ -10,13 +9,16 @@ import org.bukkit.util.Vector;
  */
 public class DirectoArrowSpell extends Spell {
 
+
     public DirectoArrowSpell(String spellName, String spellDescription, int manaCost) {
         super(spellName, spellDescription, manaCost);
     }
 
+
+
     @Override
-    public boolean cast(PlayerInteractEvent event) {
-        // check later
+    public boolean cast() {
+
         return false;
     }
 

@@ -11,6 +11,7 @@ public class MyFile extends YamlConfiguration {
 
     public static File wizardData = new File(MagicCraft.getInstance().getDataFolder(), "wizards.yml");
     public static File messageData = new File(MagicCraft.getInstance().getDataFolder(), "messages.yml");
+    public static File spells = new File(MagicCraft.getInstance().getDataFolder(), "spells.yml");
 
     private File file;
 
@@ -24,8 +25,13 @@ public class MyFile extends YamlConfiguration {
     }
 
     public static void loadFiles(){
+        if(!wizardData.exists())
         MagicCraft.getInstance().saveResource("wizards.yml", false);
+        if(!messageData.exists())
         MagicCraft.getInstance().saveResource("messages.yml", false);
+        if(!spells.exists())
+        MagicCraft.getInstance().saveResource("spells.yml", false);
+
 
     }
 
