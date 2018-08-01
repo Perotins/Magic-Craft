@@ -18,12 +18,12 @@ public class ManaTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        mana++;
+        mana += 5;
         Wizard wizard = HelperClass.getWizard(uuid);
         if(!wizard.getWands().isEmpty()){
             for(Wand wand : wizard.getWands()){
                 if(ItemManager.isSimilar(wizard.getPlayer().getInventory().getItemInMainHand(), wand)){
-                    wizard.getPlayer().setExp(mana);
+                    wizard.getPlayer().setLevel(mana);
                 }
             }
         }

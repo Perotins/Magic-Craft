@@ -17,6 +17,10 @@ public class HelperClass {
      * @return wizard obj or null if not found
      */
     public static Wizard getWizard(UUID uuid){
-        return MagicCraft.getOnlineWizards().stream().filter(wizard -> wizard.getUuid().equals(uuid)).collect(Collectors.toList()).get(0);
+        try {
+            return MagicCraft.getOnlineWizards().stream().filter(wizard -> wizard.getUuid().equals(uuid)).collect(Collectors.toList()).get(0);
+        } catch (IndexOutOfBoundsException ex){
+            return null;
+        }
     }
 }

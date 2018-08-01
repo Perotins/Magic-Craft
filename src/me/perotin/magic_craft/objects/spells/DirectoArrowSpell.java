@@ -1,8 +1,8 @@
 package me.perotin.magic_craft.objects.spells;
 
 import me.perotin.magic_craft.objects.Spell;
-import org.bukkit.Location;
-import org.bukkit.util.Vector;
+
+import org.bukkit.entity.Player;
 
 /**
  * spell that sends an arrow in the direction of line of sight
@@ -18,12 +18,14 @@ public class DirectoArrowSpell extends Spell {
 
     @Override
     public boolean cast() {
-
-        return false;
+        sendArrow();
+        return true;
     }
 
-    public void sendArrow(Location location){
+    public void sendArrow(){
         // double check
-        getWizard().getPlayer().getLocation().getWorld().spawnArrow(getWizard().getPlayer().getLocation(), new Vector(getWizard().getPlayer().getEyeLocation().getX(), getWizard().getPlayer().getEyeLocation().getY(), getWizard().getPlayer().getEyeLocation().getZ()), 20F, 20F);
+        Player player = getWizard().getPlayer();
+        player.getWorld().spawnArrow(player.getLocation(), player.getLocation().getDirection().multiply(2), 10F, 1F);
+
     }
 }

@@ -1,6 +1,8 @@
 package me.perotin.magic_craft.objects;
 
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public abstract class Spell extends MagicItem  {
 
@@ -12,6 +14,7 @@ public abstract class Spell extends MagicItem  {
     private Wizard wizard = null;
 
     public Spell(String spellName, String spellDescription, int manaCost) {
+        super(Material.RECORD_3, PlayerInteractEvent.class.toString());
         this.spellName = spellName;
         this.spellDescription = spellDescription;
         this.manaCost = manaCost;

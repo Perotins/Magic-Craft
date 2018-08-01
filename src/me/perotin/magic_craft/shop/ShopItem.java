@@ -3,7 +3,6 @@ package me.perotin.magic_craft.shop;
 import me.perotin.magic_craft.objects.MagicItem;
 import me.perotin.magic_craft.objects.Spell;
 import org.bukkit.Material;
-import org.bukkit.event.Event;
 
 public class ShopItem extends MagicItem {
 
@@ -20,8 +19,8 @@ public class ShopItem extends MagicItem {
         this.spell = spell;
     }
 
-    public ShopItem(int cost, Spell spell, Material type, Event event){
-        super(type, event);
+    public ShopItem(int cost, Spell spell, Material type, String event){
+        super(type, event.getClass().toString());
         this.spell = spell;
         this.cost = cost;
 

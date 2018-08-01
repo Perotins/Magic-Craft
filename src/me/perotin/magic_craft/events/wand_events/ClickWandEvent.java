@@ -7,6 +7,7 @@ import me.perotin.magic_craft.objects.Wand;
 import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.utils.HelperClass;
 import me.perotin.magic_craft.utils.ItemManager;
+import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -26,11 +27,12 @@ public class ClickWandEvent implements Listener {
         Player player = event.getPlayer();
         Wizard wizard = HelperClass.getWizard(player.getUniqueId());
         // first checking if it was a wand
+        Validate.notNull(wizard, "Wizard obj of "+ player.getName() + " is null!");
         if(!wizard.getWands().isEmpty()){
             ItemStack clicked = event.getItem();
             if(clicked != null && clicked.getType() != Material.AIR){
                 for(Wand wand : wizard.getWands()){
-                    if(ItemManager.isSimilar(wand, clicked)){
+                    if(wand.isSimilar(clicked)){
                        if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK){
                            // cast spell
                            Spell spell = wand.getSpellAttached();
@@ -44,6 +46,9 @@ public class ClickWandEvent implements Listener {
                                    wizard.getPlayer().sendMessage("You casted " + spell.getSpellName());
                                    wizard.getManaTask().setMana(wizard.getManaTask().getMana() - spell.getManaCost());
                                }
+                           } else {
+                               int diff = spell.getManaCost() - wizard.getManaTask().getMana();
+                               wizard.getPlayer().sendMessage("Not enough mana! You need " + diff+"!");
                            }
                        }
                     } else if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){

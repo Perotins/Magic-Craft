@@ -23,7 +23,7 @@ public class Wizard  {
         this.name = name;
         this.spells = new ArrayList<>();
         this.mana = new ManaTask(uuid);
-        mana.runTaskTimerAsynchronously(MagicCraft.getInstance(), 0, 20*5);
+        mana.runTaskTimerAsynchronously(MagicCraft.getInstance(), 0, 20*2);
         this.wands = new ArrayList<>();
 
 
