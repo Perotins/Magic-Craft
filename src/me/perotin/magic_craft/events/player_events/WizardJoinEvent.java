@@ -5,7 +5,6 @@ import me.perotin.magic_craft.objects.Wand;
 import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.objects.spells.DirectoArrowSpell;
 import me.perotin.magic_craft.utils.HelperClass;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,14 +25,15 @@ public class WizardJoinEvent implements Listener {
 
         Player joiner = event.getPlayer();
         if(HelperClass.getWizard(joiner.getUniqueId()) == null){
-            Bukkit.broadcastMessage("Got here");
             // gotta create an object for it or retrieve one, for now will just make but in the future will have to
             // retrieve it
             Wizard newWizard = new Wizard(joiner.getUniqueId(), joiner.getName());
             MagicCraft.getOnlineWizards().add(newWizard);
             newWizard.addWand(new Wand(newWizard, 10, "Phoenix core"));
-            newWizard.addSpell(new DirectoArrowSpell("Directo Arrow", "Shoots an arrow in a direction", 10));
-            newWizard.getWands().get(0).setSpellAttached(new DirectoArrowSpell("Directo Arrow", "Shoots an arrow in a direction", 10));
+            DirectoArrowSpell spell = new DirectoArrowSpell("Directo Arrow", "Shoots an arrow in a direction", 10);
+            spell.setWizard(newWizard);
+            newWizard.addSpell(spell);
+            newWizard.getWands().get(0).setSpellAttached(spell);
         }
 
     }

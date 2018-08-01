@@ -44,7 +44,7 @@ public class Wizard  {
     }
 
     public Player getPlayer(){
-        return Bukkit.getPlayer(getUuid());
+        return Bukkit.getPlayer(uuid);
     }
 
     public void setMenu(ShopMenu menu) {

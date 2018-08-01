@@ -3,10 +3,13 @@ package me.perotin.magic_craft;
 import me.perotin.magic_craft.events.player_events.WizardJoinEvent;
 import me.perotin.magic_craft.events.wand_events.ClickWandEvent;
 import me.perotin.magic_craft.events.wand_events.WandHoldEvent;
-import me.perotin.magic_craft.files.MyFile;
 import me.perotin.magic_craft.objects.Spell;
+import me.perotin.magic_craft.objects.Wand;
 import me.perotin.magic_craft.objects.Wizard;
+import me.perotin.magic_craft.objects.spells.DirectoArrowSpell;
+import me.perotin.magic_craft.utils.HelperClass;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -42,8 +45,25 @@ public class MagicCraft extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ClickWandEvent(), this);
         Bukkit.getPluginManager().registerEvents(new WandHoldEvent(), this);
         Bukkit.getPluginManager().registerEvents(new WizardJoinEvent(), this);
+        test();
 
 
+    }
+
+    private void test(){
+        for(Player joiner : Bukkit.getOnlinePlayers()) {
+            if (HelperClass.getWizard(joiner.getUniqueId()) == null) {
+                // gotta create an object for it or retrieve one, for now will just make but in the future will have to
+                // retrieve it
+                Wizard newWizard = new Wizard(joiner.getUniqueId(), joiner.getName());
+                MagicCraft.getOnlineWizards().add(newWizard);
+                newWizard.addWand(new Wand(newWizard, 10, "Phoenix core"));
+                DirectoArrowSpell spell = new DirectoArrowSpell("Directo Arrow", "Shoots an arrow in a direction", 10);
+                spell.setWizard(newWizard);
+                newWizard.addSpell(spell);
+                newWizard.getWands().get(0).setSpellAttached(spell);
+            }
+        }
     }
 
 
