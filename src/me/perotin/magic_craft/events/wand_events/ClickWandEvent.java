@@ -1,12 +1,11 @@
 package me.perotin.magic_craft.events.wand_events;
 
 import me.perotin.magic_craft.MagicCraft;
-import me.perotin.magic_craft.events.PlayerCastSpellEvent;
+import me.perotin.magic_craft.api.PlayerCastSpellEvent;
 import me.perotin.magic_craft.objects.Spell;
 import me.perotin.magic_craft.objects.Wand;
 import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.utils.HelperClass;
-import me.perotin.magic_craft.utils.ItemManager;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

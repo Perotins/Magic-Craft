@@ -1,6 +1,7 @@
 package me.perotin.magic_craft.events.player_events;
 
 import me.perotin.magic_craft.MagicCraft;
+import me.perotin.magic_craft.files.MyFile;
 import me.perotin.magic_craft.objects.Wand;
 import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.objects.spells.DirectoArrowSpell;
@@ -16,8 +17,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
  */
 public class WizardJoinEvent implements Listener {
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    //@EventHandler
+    public void onJoin1(PlayerJoinEvent event){
         // this code will change a lot but for
         // testing purposes
         // I am going to write this so we can make sure our system is working
@@ -34,6 +35,17 @@ public class WizardJoinEvent implements Listener {
             spell.setWizard(newWizard);
             newWizard.addSpell(spell);
             newWizard.getWands().get(0).setSpellAttached(spell);
+        }
+
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event){
+        Player joiner = event.getPlayer();
+        MyFile file = new MyFile(MyFile.wizardData);
+        if(file.contains(joiner.getUniqueId().toString())){
+            // not a new wizard
+
         }
 
     }

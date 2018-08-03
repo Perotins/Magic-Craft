@@ -1,10 +1,16 @@
 package me.perotin.magic_craft.objects;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.meta.ItemMeta;
 
-public class Wand extends MagicItem {
+import java.util.Arrays;
 
-    private final Wizard wizard;
+public class Wand extends MagicItem implements ConfigurationSerializable {
+
+    private final transient Wizard wizard;
     private Spell spellAttached;
     private final int length;
     private final String wandCore;
@@ -13,6 +19,7 @@ public class Wand extends MagicItem {
         this.wizard = wizard;
         this.length = length;
         this.wandCore = wandCore;
+        setupItemStack();
     }
 
     public Wand(Material type, String event, Wizard wizard, Spell spellAttached, int length, String wandCore) {
@@ -21,7 +28,23 @@ public class Wand extends MagicItem {
         this.spellAttached = spellAttached;
         this.length = length;
         this.wandCore = wandCore;
+        setupItemStack();
     }
+
+    public void setupItemStack(){
+        ItemMeta meta = getItemMeta();
+        meta.setDisplayName(spellAttached.getSpellName());
+        meta.setLore(Arrays.asList(
+                 wandCore, "Length: " + length
+        ));
+        meta.setUnbreakable(true);
+        addUnsafeEnchantment(Enchantment.ARROW_DAMAGE,1);
+        meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ENCHANTS);
+        setItemMeta(meta);
+    }
+
+
+
 
     public Wizard getWizard() {
         return wizard;

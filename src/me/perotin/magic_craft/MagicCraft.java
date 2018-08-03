@@ -29,6 +29,13 @@ public class MagicCraft extends JavaPlugin {
     2. Implement shop system or buy system or something
      */
 
+    /*
+    TODO short term stuff to do next
+    1. Make Wand, and Spell class fully implement ConfigurationSeriazable.
+            good resource -> https://www.spigotmc.org/threads/tutorial-bukkit-custom-serialization.148781/
+
+     */
+
     private static HashSet<Wizard> onlineWizards;
     private static HashSet<Spell> defaultSpells;
     private static MagicCraft instance;
@@ -40,6 +47,7 @@ public class MagicCraft extends JavaPlugin {
         defaultSpells = new HashSet<>();
         instance = this;
         this.selectNewWand = new HashMap<>();
+        saveDefaultConfig();
         //MyFile.loadFiles();
 
         Bukkit.getPluginManager().registerEvents(new ClickWandEvent(), this);

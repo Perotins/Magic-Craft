@@ -3,6 +3,7 @@ package me.perotin.magic_craft.objects.spells;
 import me.perotin.magic_craft.MagicCraft;
 import me.perotin.magic_craft.objects.Spell;
 
+import me.perotin.magic_craft.objects.SpellType;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -15,7 +16,7 @@ public class DirectoArrowSpell extends Spell {
     private float speed;
 
     public DirectoArrowSpell(String spellName, String spellDescription, int manaCost) {
-        super(spellName, spellDescription, manaCost);
+        super(spellName, spellDescription, manaCost, SpellType.DAMAGE);
         speed = 2F;
     }
 
@@ -33,6 +34,7 @@ public class DirectoArrowSpell extends Spell {
         return true;
     }
 
+    // currently not sending arrow straight when facing certain directions
     private void sendArrow(){
         Player player = getWizard().getPlayer();
         Arrow arrow = player.getWorld().spawnArrow(player.getLocation().clone().add(0, .5, 1), player.getLocation().getDirection().normalize(), speed, 0F);

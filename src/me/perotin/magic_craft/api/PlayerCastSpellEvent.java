@@ -1,4 +1,4 @@
-package me.perotin.magic_craft.events;
+package me.perotin.magic_craft.api;
 
 import me.perotin.magic_craft.objects.Spell;
 import me.perotin.magic_craft.objects.Wizard;

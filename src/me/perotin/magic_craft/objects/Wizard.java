@@ -1,6 +1,7 @@
 package me.perotin.magic_craft.objects;
 
 import me.perotin.magic_craft.MagicCraft;
+import me.perotin.magic_craft.files.MyFile;
 import me.perotin.magic_craft.shop.ShopMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -45,6 +46,16 @@ public class Wizard  {
 
     public Player getPlayer(){
         return Bukkit.getPlayer(uuid);
+    }
+
+    public void writeToFile(){
+        // going to need to rewrite this once spells and wands are serializable
+        MyFile yml = new MyFile(MyFile.wizardData);
+        yml.set(uuid.toString()+".name", name);
+        yml.set(uuid.toString()+".spells", spells);
+        yml.set(uuid.toString()+".mana", mana);
+        yml.set(uuid.toString()+".wands", wands);
+
     }
 
     public void setMenu(ShopMenu menu) {
