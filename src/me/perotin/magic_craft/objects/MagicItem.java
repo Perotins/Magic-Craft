@@ -1,11 +1,12 @@
 package me.perotin.magic_craft.objects;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 
-public class MagicItem extends ItemStack{
+public class MagicItem extends ItemStack implements ConfigurationSerializable {
 
     private ItemStack itemStack;
     private String event;
@@ -49,5 +50,6 @@ public class MagicItem extends ItemStack{
     public void use(){
 
     }
+
 
 }

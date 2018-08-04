@@ -15,6 +15,7 @@ public class HelperClass {
      *
      * @param uuid
      * @return wizard obj or null if not found
+     *
      */
     public static Wizard getWizard(UUID uuid){
         try {

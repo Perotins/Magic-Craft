@@ -1,7 +1,9 @@
 package me.perotin.magic_craft.objects;
 
+import me.perotin.magic_craft.utils.HelperClass;
 import org.bukkit.Material;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -9,7 +11,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
+@SerializableAs("MagicSpell")
 public abstract class Spell extends MagicItem implements ConfigurationSerializable {
 
     /** Identifier to distinguish between default and leveled spells**/
@@ -28,6 +32,24 @@ public abstract class Spell extends MagicItem implements ConfigurationSerializab
         this.type = type;
         setupItemStack();
     }
+
+
+    /// Constructor used for deserializing objects, make sure to deserialize only when Wizard object is online or
+    /// this will fail!
+
+    /**
+     *
+     * @param deserializedMap for deserializing
+     */
+    public Spell(Map<String, Object> deserializedMap){
+        this.spellName = (String) deserializedMap.get("name");
+        this.spellDescription = (String) deserializedMap.get("description");
+        this.manaCost = (int) deserializedMap.get("mana");
+        this.type = SpellType.valueOf((String) deserializedMap.get("type"));
+        this.wizard = HelperClass.getWizard(UUID.fromString((String) deserializedMap.get("wizard")));
+        setupItemStack();
+    }
+
 
 
     public SpellType getSpellType() {
@@ -76,9 +98,9 @@ public abstract class Spell extends MagicItem implements ConfigurationSerializab
 
         return map;
     }
+
+
     /**
-     *
-     *
      * @return if successful or not
      *
      * must be implemented so it can be called when registering spells

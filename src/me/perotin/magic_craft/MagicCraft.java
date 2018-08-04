@@ -27,6 +27,7 @@ public class MagicCraft extends JavaPlugin {
     TODO list of stuff I will do once we start implementing
     1. Implement join event to retrieve player objects from file
     2. Implement shop system or buy system or something
+    http://www.kammerl.de/ascii/AsciiSignature.php
      */
 
     /*
