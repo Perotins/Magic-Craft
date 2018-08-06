@@ -43,10 +43,10 @@ public class DefaultSpellMenu extends ShopMenu {
                 getPages().add(blankPage);
                 blankPage = getNewPage(getPageNumber()+1);
                 slot = getFirstSlot();
-                blankPage.setItem(slot, shopItem);
+                blankPage.setItem(slot, shopItem.getItem());
                 slot++;
             }
-            blankPage.setItem(slot, shopItem);
+            blankPage.setItem(slot, shopItem.getItem());
             slot++;
         }
         if(!getPages().contains(blankPage)) getPages().add(blankPage);
@@ -84,10 +84,10 @@ public class DefaultSpellMenu extends ShopMenu {
 
                         } else {
                             for (ShopItem shopItem : getItems()) {
-                                if(ItemManager.isSimilar(shopItem, clicked)){
+                                if(ItemManager.isSimilar(shopItem.getItem(), clicked)){
                                     // buying this item
                                     // implement a system for this later
-                                    clicker.getInventory().addItem(shopItem);
+                                    clicker.getInventory().addItem(shopItem.getItem());
                                     break;
                                 }
                             }

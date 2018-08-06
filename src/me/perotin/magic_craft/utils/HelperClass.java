@@ -13,7 +13,7 @@ public class HelperClass {
 
     /**
      *
-     * @param uuid
+     * @param uuid of player
      * @return wizard obj or null if not found
      *
      */
