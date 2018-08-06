@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Wizard  {
 
@@ -95,5 +96,13 @@ public class Wizard  {
 
     public void setMana(ManaTask mana) {
         this.mana = mana;
+    }
+
+    public Spell getSpell(String name){
+        try {
+            return getSpells().stream().filter(spell -> spell.getSpellName().equals(name)).collect(Collectors.toList()).get(0);
+        } catch (IndexOutOfBoundsException ex){
+            return null;
+        }
     }
 }

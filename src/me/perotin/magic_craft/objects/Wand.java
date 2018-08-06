@@ -1,5 +1,7 @@
 package me.perotin.magic_craft.objects;
 
+import me.perotin.magic_craft.utils.HelperClass;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
@@ -7,10 +9,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @SerializableAs("MagicWand")
 public class Wand extends MagicItem implements ConfigurationSerializable {
@@ -27,8 +26,8 @@ public class Wand extends MagicItem implements ConfigurationSerializable {
         setupItemStack();
     }
 
-    public Wand(Material type, String event, Wizard wizard, Spell spellAttached, int length, String wandCore) {
-        super(type, event);
+    public Wand(Material type, String event, String id, Wizard wizard, Spell spellAttached, int length, String wandCore) {
+        super(type, event, id);
         this.wizard = wizard;
         this.spellAttached = spellAttached;
         this.length = length;
@@ -36,9 +35,17 @@ public class Wand extends MagicItem implements ConfigurationSerializable {
         setupItemStack();
     }
 
+    public Wand(Map<String, Object> map){
+        this.wizard = HelperClass.getWizard(UUID.fromString((String) map.get("wizard")));
+        this.wandCore = (String) map.get("wandcore");
+        this.length = (int) map.get("length");
+        this.spellAttached = wizard.getSpell((String) map.get("attached_spell"));
+    }
+
     public void setupItemStack(){
         ItemMeta meta = getItemMeta();
-        meta.setDisplayName(spellAttached.getSpellName());
+        if(spellAttached == null) meta.setDisplayName(ChatColor.DARK_AQUA+"Current Spell: None");
+        else meta.setDisplayName(spellAttached.getSpellName());
         meta.setLore(Arrays.asList(
                  wandCore, "Length: " + length
         ));
@@ -48,20 +55,11 @@ public class Wand extends MagicItem implements ConfigurationSerializable {
         setItemMeta(meta);
     }
 
-    @Override
-    public int hashCode(){
-        int hash = 7;
-        hash = hash * length;
-        hash = hash * wandCore.length();
-        hash = hash * new Random().nextInt(100)+1;
-        return hash;
 
-    }
 
 
     public Map<String, Object> serialize(){
         Map<String, Object> serialized = new HashMap<>();
-        serialized.put("hash", hashCode());
         serialized.put("wizard", wizard.getUuid().toString());
         serialized.put("wandcore", wandCore);
         serialized.put("length", length);

@@ -24,8 +24,8 @@ public abstract class Spell extends MagicItem implements ConfigurationSerializab
     private Wizard wizard = null;
     private final SpellType type;
 
-    public Spell(String spellName, String spellDescription, int manaCost, SpellType type) {
-        super(Material.RECORD_3, PlayerInteractEvent.class.toString());
+    public Spell(String spellName, String id, String spellDescription, int manaCost, SpellType type) {
+        super(Material.RECORD_3, PlayerInteractEvent.class.toString(), id);
         this.spellName = spellName;
         this.spellDescription = spellDescription;
         this.manaCost = manaCost;
