@@ -18,6 +18,7 @@ public class Wizard  {
     private ManaTask mana;
     private ShopMenu menu = null;
     private ArrayList<Wand> wands;
+    private int vanillaXp;
 
 
     public Wizard(UUID uuid, String name) {
@@ -39,6 +40,15 @@ public class Wizard  {
     public void addWand(Wand wand){
         wands.add(wand);
         getPlayer().getInventory().addItem(wand);
+    }
+
+
+    public int getVanillaXp() {
+        return vanillaXp;
+    }
+
+    public void setVanillaXp(int vanillaXp) {
+        this.vanillaXp = vanillaXp;
     }
 
     public ShopMenu getMenu() {

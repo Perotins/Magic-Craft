@@ -42,7 +42,7 @@ public class Wand extends MagicItem implements ConfigurationSerializable {
         this.spellAttached = wizard.getSpell((String) map.get("attached_spell"));
     }
 
-    public void setupItemStack(){
+    private void setupItemStack(){
         ItemMeta meta = getItemMeta();
         if(spellAttached == null) meta.setDisplayName(ChatColor.DARK_AQUA+"Current Spell: None");
         else meta.setDisplayName(spellAttached.getSpellName());
@@ -79,8 +79,13 @@ public class Wand extends MagicItem implements ConfigurationSerializable {
         return spellAttached;
     }
 
+    /**
+     *
+     * @param spellAttached sets the current spell for wand and resets ItemMeta of wand
+     */
     public void setSpellAttached(Spell spellAttached) {
         this.spellAttached = spellAttached;
+        setupItemStack();
     }
 
     public int getLength() {

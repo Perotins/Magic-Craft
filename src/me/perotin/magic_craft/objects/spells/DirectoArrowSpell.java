@@ -16,8 +16,8 @@ public class DirectoArrowSpell extends Spell {
     private float speed;
 
     public DirectoArrowSpell(String spellName, String spellDescription, int manaCost) {
-        super(spellName, spellDescription, manaCost, SpellType.DAMAGE);
-        speed = 2F;
+        super(spellName,"t", spellDescription, manaCost, SpellType.DAMAGE);
+        speed = 1F;
     }
 
     public float getSpeed() {
@@ -37,13 +37,15 @@ public class DirectoArrowSpell extends Spell {
     // currently not sending arrow straight when facing certain directions
     private void sendArrow(){
         Player player = getWizard().getPlayer();
-        Arrow arrow = player.getWorld().spawnArrow(player.getLocation().clone().add(0, .5, 1), player.getLocation().getDirection().normalize(), speed, 0F);
+
+
+        Arrow arrow = player.getWorld().spawnArrow(player.getEyeLocation().add(0.5, 1, 0.5), player.getLocation().getDirection(), speed, 1F);
        new BukkitRunnable() {
           @Override
           public void run() {
               arrow.remove();
           }
-      }.runTaskLater(MagicCraft.getInstance(), 20*5);
+      }.runTaskLater(MagicCraft.getInstance(), 20*3);
 
     }
 }

@@ -1,6 +1,6 @@
 package me.perotin.magic_craft.shop.menus;
 
-import me.perotin.magic_craft.MagicCraft;
+
 import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.shop.ShopItem;
 import me.perotin.magic_craft.shop.ShopMenu;

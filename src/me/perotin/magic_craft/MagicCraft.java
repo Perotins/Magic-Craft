@@ -56,7 +56,6 @@ public class MagicCraft extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new WizardJoinEvent(), this);
         test();
 
-
     }
 
     private void test(){
@@ -66,11 +65,13 @@ public class MagicCraft extends JavaPlugin {
                 // retrieve it
                 Wizard newWizard = new Wizard(joiner.getUniqueId(), joiner.getName());
                 MagicCraft.getOnlineWizards().add(newWizard);
-                newWizard.addWand(new Wand(newWizard, 10, "Phoenix core"));
+                Wand wand = new Wand(newWizard, 10, "Phoenix core test");
                 DirectoArrowSpell spell = new DirectoArrowSpell("Directo Arrow", "Shoots an arrow in a direction", 10);
                 spell.setWizard(newWizard);
                 newWizard.addSpell(spell);
-                newWizard.getWands().get(0).setSpellAttached(spell);
+                wand.setSpellAttached(spell);
+                newWizard.addWand(wand);
+
             }
         }
     }
