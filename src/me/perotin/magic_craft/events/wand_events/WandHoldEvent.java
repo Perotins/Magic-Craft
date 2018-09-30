@@ -5,12 +5,10 @@ import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.utils.HelperClass;
 import me.perotin.magic_craft.utils.ItemManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class WandHoldEvent implements Listener {

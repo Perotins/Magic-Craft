@@ -25,7 +25,7 @@ public abstract class Spell extends MagicItem implements ConfigurationSerializab
     private final SpellType type;
 
     public Spell(String spellName, String id, String spellDescription, int manaCost, SpellType type) {
-        super(Material.RECORD_3, PlayerInteractEvent.class.toString(), id);
+        super(Material.MUSIC_DISC_13, PlayerInteractEvent.class.toString(), id);
         this.spellName = spellName;
         this.spellDescription = spellDescription;
         this.manaCost = manaCost;
@@ -89,7 +89,7 @@ public abstract class Spell extends MagicItem implements ConfigurationSerializab
     /// Wizard will not be null here because only storing spells from wizard instances
     @Override
     public Map<String, Object> serialize(){
-        HashMap map = new HashMap<String, Object>();
+        HashMap<String, Object> map = new HashMap<>();
         map.put("name", spellName);
         map.put("description", spellDescription);
         map.put("mana", manaCost);
