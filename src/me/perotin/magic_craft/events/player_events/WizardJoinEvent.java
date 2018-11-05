@@ -11,12 +11,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.util.stream.Collectors;
+
 /**
  * class that handles the joining of players and the creating of wizard objects and a lot of other things I can't think of
  * at the moment.
  */
 public class WizardJoinEvent implements Listener {
 
+
+    private MagicCraft instance;
+    public WizardJoinEvent(MagicCraft instance){
+        this.instance = instance;
+    }
     //@EventHandler
     public void onJoin1(PlayerJoinEvent event){
         // this code will change a lot but for
@@ -43,9 +50,14 @@ public class WizardJoinEvent implements Listener {
     public void onJoin(PlayerJoinEvent event){
         Player joiner = event.getPlayer();
         MyFile file = new MyFile(MyFile.wizardData);
-        if(file.contains(joiner.getUniqueId().toString())){
-            // not a new wizard
+        if(!MagicCraft.getOnlineWizards().stream().map(Wizard::getUuid).collect(Collectors.toList()).contains(joiner.getUniqueId())){
+            if(file.contains(joiner.getUniqueId().toString())){
+                // not a new wizard
 
+
+            } else {
+                // new player
+            }
         }
 
     }

@@ -32,6 +32,15 @@ public class Wizard  {
 
     }
 
+    // constructor used for pulling from file
+    public Wizard(UUID uuid, String name, ArrayList<Spell> spells, ManaTask mana, ArrayList<Wand> wands, int vanillaXp) {
+        this.uuid = uuid;
+        this.name = name;
+        this.spells = spells;
+        this.mana = mana;
+        this.wands = wands;
+        this.vanillaXp = vanillaXp;
+    }
 
     public ArrayList<Wand> getWands() {
         return wands;
@@ -66,6 +75,8 @@ public class Wizard  {
         yml.set(uuid.toString()+".spells", spells);
         yml.set(uuid.toString()+".mana", mana);
         yml.set(uuid.toString()+".wands", wands);
+        yml.set(uuid.toString()+".vanillaxp", vanillaXp);
+        yml.saveWizardsFile();
 
     }
 
@@ -114,5 +125,9 @@ public class Wizard  {
         } catch (IndexOutOfBoundsException ex){
             return null;
         }
+    }
+
+    public boolean isOffline(){
+        return getPlayer() != null;
     }
 }

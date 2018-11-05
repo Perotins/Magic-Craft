@@ -53,7 +53,7 @@ public class MagicCraft extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new ClickWandEvent(), this);
         Bukkit.getPluginManager().registerEvents(new WandHoldEvent(), this);
-        Bukkit.getPluginManager().registerEvents(new WizardJoinEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new WizardJoinEvent(this), this);
         test();
 
     }

@@ -80,6 +80,7 @@ public class DefaultSpellMenu extends ShopMenu {
                                 // go forward a page
                                 clicker.openInventory(menu.getPages().get(getPageNumber()));
                                 menu.setPageNumber(menu.getPageNumber()+1);
+
                             }
 
                         } else {
