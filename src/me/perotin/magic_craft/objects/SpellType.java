@@ -1,5 +1,8 @@
 package me.perotin.magic_craft.objects;
 
+/**
+ * Type of spell, not a totally useful class but might have some use later
+ */
 public enum  SpellType {
 
     DAMAGE("Damage"), MOVEMENT("Movement"), BUILDING ("Building"), UTILITY ("Utility");

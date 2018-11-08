@@ -6,6 +6,10 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
+/**
+ * @apiNote
+ * event called when player casts a spell
+ */
 public class PlayerCastSpellEvent extends Event implements Cancellable {
 
 

@@ -4,7 +4,9 @@ import me.perotin.magic_craft.objects.Wizard;
 
 import java.util.ArrayList;
 
-
+/**
+ * base shop class. All shops are GUIs shown to players so they have a viewer wiz object
+ */
 public class Shop  {
 
     private ArrayList<ShopItem> items;

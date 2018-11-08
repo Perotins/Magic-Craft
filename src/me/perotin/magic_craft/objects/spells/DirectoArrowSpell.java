@@ -10,6 +10,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * spell that sends an arrow in the direction of line of sight
+ *  Demo spell
  */
 public class DirectoArrowSpell extends Spell {
 

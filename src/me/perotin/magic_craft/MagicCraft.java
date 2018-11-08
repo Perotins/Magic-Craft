@@ -9,6 +9,7 @@ import me.perotin.magic_craft.objects.Wizard;
 import me.perotin.magic_craft.objects.spells.DirectoArrowSpell;
 import me.perotin.magic_craft.utils.HelperClass;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -42,6 +43,13 @@ public class MagicCraft extends JavaPlugin {
     private static MagicCraft instance;
     private HashMap<Wizard, PlayerInventory> selectNewWand;
 
+    static {
+        ConfigurationSerialization.registerClass(Spell.class, "Spell");
+        ConfigurationSerialization.registerClass(Spell.class, "Wand");
+        ConfigurationSerialization.registerClass(Spell.class, "MagicItem");
+        ConfigurationSerialization.registerClass(Spell.class, "Spell");
+
+    }
     @Override
     public void onEnable(){
         onlineWizards = new HashSet<>();

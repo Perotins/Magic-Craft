@@ -9,6 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * Custom config file for making yml access easier
+ */
 public class MyFile extends YamlConfiguration {
 
     public static File wizardData = new File(MagicCraft.getInstance().getDataFolder(), "wizards.yml");
@@ -52,10 +55,14 @@ public class MyFile extends YamlConfiguration {
         }
     }
 
-    public static Wizard load(UUID uuid){
-        //TODO
-
-    }
+//    public static Wizard load(UUID uuid){
+//        //TODO
+//        MyFile wizFile = new MyFile(wizardData);
+//        String name = wizFile.getString(uuid.toString()+".name");
+//
+//
+//        return new Wizard();
+//    }
 
 
 

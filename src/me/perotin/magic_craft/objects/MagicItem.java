@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Represents any item that has "magic" or recognized within the plugin. All wands extend Magic Item
+ */
+
 @SerializableAs("MagicItem")
 public class MagicItem extends ItemStack implements ConfigurationSerializable {
 
@@ -38,10 +42,10 @@ public class MagicItem extends ItemStack implements ConfigurationSerializable {
         this.id = id;
     }
 
-    public MagicItem(Map<String, Object> deserial){
-        this.itemStack = (ItemStack) deserial.get("itemstack");
-        this.event = (String) deserial.get("event");
-        this.id = (String) deserial.get("id");
+    public MagicItem(Map<String, Object> deserialize){
+        this.itemStack = (ItemStack) deserialize.get("itemstack");
+        this.event = (String) deserialize.get("event");
+        this.id = (String) deserialize.get("id");
     }
 
 

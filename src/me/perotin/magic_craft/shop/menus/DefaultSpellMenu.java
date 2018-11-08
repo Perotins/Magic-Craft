@@ -15,6 +15,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
+/**
+ * Class for showing spells. Not essential but will be worked on later
+ */
+
 public class DefaultSpellMenu extends ShopMenu {
 
     public DefaultSpellMenu(ArrayList<ShopItem> items, int first, int last, int size){

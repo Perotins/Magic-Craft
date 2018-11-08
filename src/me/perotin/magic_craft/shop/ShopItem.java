@@ -7,6 +7,9 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * ShopItem similar to MagicItem, might get rrid of
+ */
 public class ShopItem implements ConfigurationSerializable {
 
     /// Null if it isn't a spell being sold

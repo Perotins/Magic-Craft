@@ -11,6 +11,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Event for handling switching between a wand and other items
+ */
 public class WandHoldEvent implements Listener {
 
     @EventHandler

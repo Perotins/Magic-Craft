@@ -12,6 +12,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
+/**
+ * Class for showing shops. Might need some rethinking about adding a Shop field
+ */
 public abstract class ShopMenu implements Listener {
 
    private final ArrayList<ShopItem> items;

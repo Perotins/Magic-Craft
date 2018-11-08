@@ -13,6 +13,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * @apiNote
+ * Class for all spells. Spell objects can be assigned to wizards after initialization or never
+ * be attached to a wizard. Spells shown in shops, etc, will not have an attached wizard object
+ */
 @SerializableAs("MagicSpell")
 public abstract class Spell extends MagicItem implements ConfigurationSerializable {
 

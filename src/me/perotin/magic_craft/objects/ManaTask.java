@@ -6,6 +6,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.UUID;
 
+/**
+ * Class for handling mana and adding mana. Have to introduce max mana at some point
+ */
+
 public class ManaTask extends BukkitRunnable {
 
     private int mana = 0;

@@ -11,6 +11,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
+/**
+ * Object for every wand. Wands have some attributes like wand core and length which are cosmetics.
+ * Every wand must have a wizard with it and spell attached is null at initialization
+ */
 @SerializableAs("MagicWand")
 public class Wand extends MagicItem implements ConfigurationSerializable {
 
